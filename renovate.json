@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    ":semanticCommits",
+    "config:best-practices",
+    "group:monorepos",
+    "group:recommended"
+  ],
+  "customDatasources": {
+    "mc": {
+      "defaultRegistryUrlTemplate": "https://dl.min.io/client/mc/release/linux-amd64/",
+      "format": "html"
+    }
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^test\\.sh$"],
+      "matchStrings": ["VERSION=(?<currentValue>.+)$"],
+      "packageNameTemplate": "mc",
+      "datasourceTemplate": "custom.mc"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": ["custom.mc"],
+      "extractVersion": "^mc\\.(?<version>RELEASE\\.[^.]+)$",
+      "versioning": "regex:^RELEASE\\.(?<major>\\d{4})-(?<minor>\\d{2})-(?<patch>\\d{2})T\\d{2}-\\d{2}-\\d{2}Z$"
+    },
+    {
+      "matchDepNames": ["mc"],
+      "automerge": true
+    }
+  ]
+}
