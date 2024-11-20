@@ -28,11 +28,6 @@
       "extractVersion": "^mc\\.(?<version>RELEASE\\.[^.]+)$"
     },
     {
-      "matchDatasources": ["custom.mc"],
-      "matchPackageNames": ["mc"],
-      "versioning": "regex:^RELEASE\\.(?<major>\\d{4})-(?<minor>\\d{2})-(?<patch>\\d{2})T\\d{2}-\\d{2}-\\d{2}Z$"
-    },
-    {
       "matchDepNames": ["mc"],
       "automerge": true
     }
