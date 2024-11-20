@@ -18,15 +18,12 @@
       "fileMatch": ["^test\\.sh$"],
       "matchStrings": ["VERSION=(?<currentValue>[^\\s]+)"],
       "versioningTemplate": "regex:^RELEASE\\.(?<major>\\d{4})-(?<minor>\\d{2})-(?<patch>\\d{2})T\\d{2}-\\d{2}-\\d{2}Z$",
-      "packageNameTemplate": "mc",
-      "datasourceTemplate": "custom.mc"
+      "extractVersionTemplate": "^mc\\.(?<version>RELEASE\\.[^.]+)$",
+      "datasourceTemplate": "custom.mc",
+      "packageNameTemplate": "mc"
     }
   ],
   "packageRules": [
-    {
-      "matchDatasources": ["custom.mc"],
-      "extractVersion": "^mc\\.(?<version>RELEASE\\.[^.]+)$"
-    },
     {
       "matchDepNames": ["mc"],
       "automerge": true
