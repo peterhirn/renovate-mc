@@ -16,7 +16,8 @@
     {
       "customType": "regex",
       "fileMatch": ["^test\\.sh$"],
-      "matchStrings": ["VERSION=(?<currentValue>.+)$"],
+      "matchStrings": ["VERSION=(?<currentValue>[^\\s]+)"],
+      "versioningTemplate": "regex:^RELEASE\\.(?<major>\\d{4})-(?<minor>\\d{2})-(?<patch>\\d{2})T\\d{2}-\\d{2}-\\d{2}Z$",
       "packageNameTemplate": "mc",
       "datasourceTemplate": "custom.mc"
     }
@@ -24,7 +25,11 @@
   "packageRules": [
     {
       "matchDatasources": ["custom.mc"],
-      "extractVersion": "^mc\\.(?<version>RELEASE\\.[^.]+)$",
+      "extractVersion": "^mc\\.(?<version>RELEASE\\.[^.]+)$"
+    },
+    {
+      "matchDatasources": ["custom.mc"],
+      "matchPackageNames": ["mc"],
       "versioning": "regex:^RELEASE\\.(?<major>\\d{4})-(?<minor>\\d{2})-(?<patch>\\d{2})T\\d{2}-\\d{2}-\\d{2}Z$"
     },
     {
