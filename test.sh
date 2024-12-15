@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-VERSION=RELEASE.2024-11-17T19-35-25Z
+VERSION=RELEASE.2024-11-21T17-21-54Z
 
 # /archive is extremely slow :(
 curl --no-progress-meter --fail-with-body --create-dirs \
