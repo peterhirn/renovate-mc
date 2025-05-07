@@ -15,8 +15,12 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^test\\.sh$"],
-      "matchStrings": ["VERSION=(?<currentValue>[^\\s]+)"],
+      "managerFilePatterns": [
+        "/^test\\.sh$/"
+      ],
+      "matchStrings": [
+        "VERSION=(?<currentValue>[^\\s]+)"
+      ],
       "versioningTemplate": "regex:^RELEASE\\.(?<major>\\d{4})-(?<minor>\\d{2})-(?<patch>\\d{2})T\\d{2}-\\d{2}-\\d{2}Z$",
       "extractVersionTemplate": "^mc\\.(?<version>RELEASE\\.[^.]+)$",
       "datasourceTemplate": "custom.mc",
@@ -25,7 +29,9 @@
   ],
   "packageRules": [
     {
-      "matchDepNames": ["mc"],
+      "matchDepNames": [
+        "mc"
+      ],
       "automerge": true
     }
   ]
